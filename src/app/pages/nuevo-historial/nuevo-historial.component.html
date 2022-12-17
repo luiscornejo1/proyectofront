@@ -1,0 +1,123 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid animated fadeIn">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Datos del paciente</h3>
+            </div>                
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">            
+            <div class="col-12">
+                <form (ngSubmit)="submit();" [formGroup]="multiBloque" >
+                <div *ngIf="bloque == 1" formGroupName="datosPaciente">
+                    <div class="form-group row" >
+                        <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+                        <div class="col-5">
+                            <select class="form-control" [(ngModel)]="newhistorial.idpaciente" formControlName="nombre">
+                                    <option *ngFor="let datos of pacientes" value="{{datos.idpaciente}}" >{{datos.nompaciente}}</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-search-input" class="col-2 col-form-label">Peso</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" [(ngModel)]="newhistorial.pesohistorial" formControlName="peso" >
+                        </div>
+                        <label for="example-search-input" class="col-2 col-form-label">Talla</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" [(ngModel)]="newhistorial.tallahistorial" formControlName="talla" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-search-input" class="col-2 col-form-label">FrC</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" [(ngModel)]="newhistorial.fchistorial" formControlName="frC" >
+                        </div>
+                        <label for="example-search-input" class="col-2 col-form-label">Temperatura</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" [(ngModel)]="newhistorial.frhistorial" formControlName="temperatura" >
+                        </div>
+                    </div>
+ 
+                </div>      
+
+                <div *ngIf="bloque == 2" formGroupName="datosPaciente2">
+                        
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Ah</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" [(ngModel)]="newhistorial.ahhistorial" formControlName="ah" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Apnp</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" [(ngModel)]="newhistorial.apnphistorial" formControlName="apnp" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Hemotipo</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" [(ngModel)]="newhistorial.hemotipohistorial" formControlName="hemotipo" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Alergias</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" [(ngModel)]="newhistorial.alergiashistorial" formControlName="alergias" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>App</label>
+                            <textarea class="form-control" rows="4" [(ngModel)]="newhistorial.apphistorial" formControlName="app"  ></textarea>
+                        </div>
+
+                       
+                </div>
+                <div *ngIf="bloque == 3" formGroupName="datosPaciente3">
+                    <div class="form-group">
+                        <label for="example-search-input" class="col-2 col-form-label">Próxima cita</label>
+                        <div class="col-4">
+                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" [(ngModel)]="newhistorial.citahistorial" formControlName="cita" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-search-input" class="col-2 col-form-label">Diagnóstico</label>                        
+                        
+                        <textarea class="form-control" rows="8" [(ngModel)]="newhistorial.diagnostico" formControlName="diagnostico"></textarea>
+                    </div>
+                    
+                </div>
+                <a (click)="btnAtras();" style="margin-right: 15px; color: white;" class="btn btn-success" *ngIf="bloque != 1" >Atras</a>
+                <button type="submit" class="btn btn-success" *ngIf="bloque !=3" >Siguiente</button>
+                <button (click)="altaHistorial();" class="btn btn-success" *ngIf="bloque == 3" >Registrar</button>
+                
+                </form>
+            </div>
+        </div>            
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
